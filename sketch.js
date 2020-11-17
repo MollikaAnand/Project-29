@@ -9,14 +9,14 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  polygon = Bodies.circle(50,200,20);
-  World.add(world,polygon);
-  
+
+  polygon = new Polygon(70,200,50,50);
+
+  slingshot = new Slingshot(polygon.body,{x:100,y:200});
+
   ground1 = new Ground(650,270,200,20);
   ground2 = new Ground(390,350,140,20);
 
-  slingshot = new Slingshot(this.polygon,{x:100,y:200});
-  
 //tower1
   block1 = new Box(575,240);
   block2 = new Box(605,240);
@@ -66,6 +66,7 @@ function setup() {
 function draw() {
   background(190,150,225);  
 
+
   ground1.display();
   ground2.display();
 
@@ -110,5 +111,22 @@ function draw() {
 
   block31.display();
 
+  polygon.display();
+
+  slingshot.display();
+
   drawSprites();
 }
+
+function mouseDragged(){
+
+  Matter.Body.setPosition(polygon.body,{x: mouseX, y: mouseY});
+
+}
+
+function mouseReleased() {
+
+slingshot.fly();
+
+}
+
