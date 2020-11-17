@@ -10,7 +10,7 @@ function setup() {
   world = engine.world;
 
 
-  polygon = new Polygon(70,200,50,50);
+  polygon = new Polygon(70,200,50);
 
   slingshot = new Slingshot(polygon.body,{x:100,y:200});
 
